@@ -1,0 +1,28 @@
+<!-- BEGIN: Header -->
+<header mHeader #mHeader class="m-grid__item m-header" [attr.m-minimize]="headerService.attrMinimizeDesktopEnabled ? 'minimize' : null" [attr.m-minimize-offset]="headerService.attrMinimizeOffset" [attr.m-minimize-mobile-offset]="headerService.attrMinimizeMobileOffset">
+	<div class="m-header__top">
+		<div class="m-page__container" [ngClass]="headerService.containerClass">
+			<div class="m-stack m-stack--ver m-stack--desktop">
+				<m-brand></m-brand>
+				<m-topbar></m-topbar>
+			</div>
+		</div>
+		<mat-progress-bar class="m-loading-bar" *ngIf="(loader.progress$|async) > 0" [value]="loader.progress$|async"></mat-progress-bar>
+	</div>
+	<div class="m-header__bottom">
+		<div class="m-page__container" [ngClass]="headerService.containerClass">
+			<div class="m-stack m-stack--ver m-stack--desktop">
+				<!-- BEGIN: Horizontal Menu -->
+				<ng-container *ngIf="headerService.menuHeaderDisplay">
+					<!-- show/hide horizontal menu based on menu.header.display option -->
+					<button class="m-aside-header-menu-mobile-close" id="m_aside_header_menu_mobile_close_btn" [ngClass]="headerService.headerMenuCloseClass">
+						<i class="la la-close"></i>
+					</button>
+					<m-menu-horizontal></m-menu-horizontal>
+				</ng-container>
+				<!-- END: Horizontal Menu -->
+			</div>
+		</div>
+	</div>
+</header>
+<!-- END: Header -->
